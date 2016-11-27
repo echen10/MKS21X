@@ -1,0 +1,6 @@
+git config --list : prints the configurations of git settings such as user.name, user.email, and core.editor.
+
+git config --global <setting> <name> : Changes each option of the git config
+
+
+
