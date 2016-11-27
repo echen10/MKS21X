@@ -1,6 +1,7 @@
 git config --list : prints the configurations of git settings such as user.name, user.email, and core.editor.
-
 git config --global <setting> <name> : Changes each option of the git config
-
-
-
+git clone <filename> : creates a local copy of the repository
+git init : initialize a new repository
+git add <filename> : adds a file to the repository
+git commit -m "message" : Commit changes to head. Add a message to document changes
+git push : update changes to repository
