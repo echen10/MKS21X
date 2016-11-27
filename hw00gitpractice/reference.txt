@@ -10,3 +10,7 @@ git potato : patota
 git tomato : tamota
 git ping : pong
 git king : kong
+
+M O R E
+ B O G U S
+  C H A N G E S
