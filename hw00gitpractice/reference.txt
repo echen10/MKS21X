@@ -1,6 +1,25 @@
+<<<<<<< HEAD
 clone :
 pull :
 add :
 commit :
 push :
 config --list : 
+=======
+git config --list : prints the configurations of git settings such as user.name, user.email, and core.editor.
+git config --global <setting> <name> : Changes each option of the git config
+git clone <filename> : creates a local copy of the repository
+git init : initialize a new repository
+git add <filename> : adds a file to the repository
+git commit -m "message" : Commit changes to head. Add a message to document changes
+git push : update changes to repository
+
+git potato : patota
+git tomato : tamota
+git ping : pong
+git king : kong
+
+M O R E
+ B O G U S
+  C H A N G E S
+>>>>>>> f7fb3aafac0e1ecf9bf9e5f78a35481161a19086
