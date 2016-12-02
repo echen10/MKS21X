@@ -1,3 +1,4 @@
+import java.util.*;
 public class SuperArrayIterator implements Iterator<String> {
     int index;
     SuperArray array;
@@ -17,5 +18,11 @@ public class SuperArrayIterator implements Iterator<String> {
     }
 
     public boolean hasNext() {
-	return index < this.length;
+	return index < this.size();
     }
+
+    public void remove() {
+	throw new UnsupportedOperationException();
+    }
+
+}
