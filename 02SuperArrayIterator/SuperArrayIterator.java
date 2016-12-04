@@ -3,14 +3,15 @@ public class SuperArrayIterator implements Iterator<String> {
     int index;
     SuperArray array;
     
-    public SuperArrayIterator() {
-	index = 0;
-	array = this;
+    public SuperArrayIterator(int ind, SuperArray arr) {
+	this.index = ind;
+	this.array = arr;
     }
 
-    public SuperArray next() {
-	if ( hasNext() ) {
-	    return index++;
+    public String next() {
+	if ( this.hasNext() ) {
+	    index++;
+	    return array.get(index);
 	}
 	else {
 	    throw new NoSuchElementException();
@@ -18,7 +19,7 @@ public class SuperArrayIterator implements Iterator<String> {
     }
 
     public boolean hasNext() {
-	return index < this.size();
+	return index < array.size();
     }
 
     public void remove() {
