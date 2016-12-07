@@ -7,15 +7,18 @@ public class Barcode implements Comparable<Barcode> {
 	    throw new IllegalArgumentException("Incorrect zip code length");
 	}
 	_zip = zip;
-	_checkDigits = checkSum(_zip);
+	_checkDigit = checkSum(_zip);
     }
 
-    private int checkSum() {
+    private int checkSum(String num) {
 	int sum = 0;
 	for ( int i = 0; i < 6; i++ ) {
-	    sum += (int) _zip.charAt(i);
+	    sum += (int) num.charAt(i);
 	}
 	return sum % 10;
     }
+
+    public int compareTo(Barcode other) {
+	
 
 }
