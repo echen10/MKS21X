@@ -9,8 +9,13 @@ public class Driver {
 	//Barcode b6 = new Barcode("123456");
 	
 	//System.out.println(b1);
-	String x = Barcode.toBarcode("12321");
-	System.out.println(x);
-	System.out.println(Barcode.toZip(x));
+	//String x = Barcode.toBarcode("12321");
+	String y = "||||||||||||||||||||||||||||||||";
+	String z = "|:::||:::||:::||:::||:::||:::|||";
+
+	//System.out.println(x);
+	//System.out.println(Barcode.toZip(x));
+	System.out.println(Barcode.toZip(y));
+	System.out.println(Barcode.toZip(z));
     }
 }

@@ -22,7 +22,7 @@ public class Barcode implements Comparable<Barcode> {
     }
 
     public int compareTo(Barcode other) {
-	return this.compareTo(other);
+	return zip.compareTo(other.zip);
     }
 
     public static String toBarcode(String zip) {
@@ -76,18 +76,18 @@ public class Barcode implements Comparable<Barcode> {
 	for ( int i = 1; i < 26; i += 5 ) {
 	    String bars = code.substring(i, i+5);
 	    System.out.println(bars);
-	    if ( ( bars ==  ":::||" ||
-		    bars ==  "::|:|" ||
-		    bars ==  "::||:" ||
-		    bars ==  ":|::|" ||
-		    bars ==  ":|:|:" ||
-		    bars ==  ":||::" ||
-		    bars ==  "|:::|" ||
-		    bars ==  "|::|:" ||
-		    bars ==  "|:|::" ||
-		    bars ==  "||:::" ) ){
+	    if ( ( bars.equals(":::||") ||
+		   bars ==  "::|:|" ||
+		   bars ==  "::||:" ||
+		   bars ==  ":|::|" ||
+		   bars ==  ":|:|:" ||
+		   bars ==  ":||::" ||
+		   bars ==  "|:::|" ||
+		   bars ==  "|::|:" ||
+		   bars ==  "|:|::" ||
+		   bars ==  "||:::" ) ){
 		     
-		     throw new IllegalArgumentException("Barcode mismatch!");
+		throw new IllegalArgumentException("Barcode mismatch!");
 	    }
 	}
 	
