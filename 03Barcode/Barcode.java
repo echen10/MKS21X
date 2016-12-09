@@ -1,22 +1,19 @@
 public class Barcode implements Comparable<Barcode> {
-    private String _zip;
-    private int _checkDigit;
+    private String zip;
 
-    public Barcode(String zip) {
+    public Barcode(String num) {
+	zip = num;
 	if ( zip.length() != 5 ) {
 	    throw new IllegalArgumentException("Incorrect zip code length!");
 	}
 	for ( int i = 0; i < 5; i++ ) {
-	    if ( !( Character.isDigit(zip.charAt(i)) ) ) {
+	    if ( !( Character.isDigit(num.charAt(i)) ) ) {
 		throw new IllegalArgumentException("Numerical values only!");
 	    }
 	}
-	
-	_zip = zip;
-	_checkDigit = checkSum(_zip);
     }
 
-    private int checkSum(String num) {
+    private static int checkSum(String num) {
 	int sum = 0;
 	for ( int i = 0; i < 5; i++ ) {
 	    sum += (int) num.charAt(i);
@@ -28,13 +25,11 @@ public class Barcode implements Comparable<Barcode> {
 	return this.compareTo(other);
     }
 
-    public String toString() {
-	String ans = "";
-	ans += _zip + _checkDigit + " |";
-	
+    public static String toBarcode(String zip) {
+	String ans = "|";
 	for ( int i = 0; i < 6; i++ ) {
-	    String bc = _zip + _checkDigit;
-	    int digit = bc.charAt(i);
+	    String bc = zip + checkSum(zip);
+	    char digit = bc.charAt(i);
 
 	    switch( digit ) {
 		
@@ -60,6 +55,42 @@ public class Barcode implements Comparable<Barcode> {
 		break;
 	    }
 	}
-	return ans + "|";
+	return ans += "|";
+    }
+
+    public static String toZip(String code) {
+	String ans = "";
+	for ( int i = 1; i < 26; i += 5 ) {
+	    String bars = code.substring(i, i+6);
+	    
+	    switch( bars ) {
+	    case ":::||" : ans += "1";
+		break;
+	    case "::|:|" : ans += "2";
+		break;
+	    case "::||:" : ans += "3";
+		break;
+	    case ":|::|" : ans += "4";
+		break;
+	    case ":|:|:" : ans += "5";
+		break;
+	    case ":||::" : ans += "6";
+		break;
+	    case "|:::|" : ans += "7";
+		break;
+	    case "|::|:" : ans += "8";
+		break;
+	    case "|:|::" : ans += "9";
+		break;
+	    case "||:::" : ans += "0";
+		break;
+	    }
+	}
+	return ans;
+    }
+    
+
+    public String toString() {
+        return zip + checkSum(zip) + " " +  toBarcode(zip);
     }
 }
