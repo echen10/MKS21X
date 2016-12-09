@@ -59,9 +59,45 @@ public class Barcode implements Comparable<Barcode> {
     }
 
     public static String toZip(String code) {
+	if ( code.length() != 32 ) {
+	    throw new IllegalArgumentException("Invalid length!");
+	}
+	
+	for ( int i = 0; i < 5; i++ ) {
+	    if ( !( code.charAt(i) == '|' || code.charAt(i) == ':' ) ) {
+		throw new IllegalArgumentException("Invalid characters!");
+	    }
+	}
+	
+	if ( code.charAt(0) != '|' || code.charAt(31) != '|' ) {
+	    throw new IllegalArgumentException("Missing guard rails!");
+	}
+
+	for ( int i = 1; i < 26; i += 5 ) {
+	    String bars = code.substring(i, i+5);
+	    System.out.println(bars);
+	    if ( ( bars ==  ":::||" ||
+		    bars ==  "::|:|" ||
+		    bars ==  "::||:" ||
+		    bars ==  ":|::|" ||
+		    bars ==  ":|:|:" ||
+		    bars ==  ":||::" ||
+		    bars ==  "|:::|" ||
+		    bars ==  "|::|:" ||
+		    bars ==  "|:|::" ||
+		    bars ==  "||:::" ) ){
+		     
+		     throw new IllegalArgumentException("Barcode mismatch!");
+	    }
+	}
+	
+	//if (  ) {
+	//    throw new IllegalArgumentException("Invalid checkSum!");
+	//}
+
 	String ans = "";
 	for ( int i = 1; i < 26; i += 5 ) {
-	    String bars = code.substring(i, i+6);
+	    String bars = code.substring(i, i+5);
 	    
 	    switch( bars ) {
 	    case ":::||" : ans += "1";

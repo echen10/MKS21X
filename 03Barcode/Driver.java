@@ -8,7 +8,9 @@ public class Driver {
 	//Barcode b5 = new Barcode("w12345");
 	//Barcode b6 = new Barcode("123456");
 	
-	System.out.println(b1);
-	System.out.println(b2);
+	//System.out.println(b1);
+	String x = Barcode.toBarcode("12321");
+	System.out.println(x);
+	System.out.println(Barcode.toZip(x));
     }
 }
