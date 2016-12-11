@@ -21,6 +21,33 @@ public class Barcode implements Comparable<Barcode> {
 	return sum % 10;
     }
 
+    private static int toInt(String code) {
+	int ans = 0;
+	System.out.println(code+ "Hello");
+	switch( code ) {
+	    case ":::||" : ans += 1;
+		break;
+	    case "::|:|" : ans += 2;
+		break;
+	    case "::||:" : ans += 3;
+		break;
+	    case ":|::|" : ans += 4;
+		break;
+	    case ":|:|:" : ans += 5;
+		break;
+	    case ":||::" : ans += 6;
+		break;
+	    case "|:::|" : ans += 7;
+		break;
+	    case "|::|:" : ans += 8;
+		break;
+	    case "|:|::" : ans += 9;
+		break;
+	    case "||:::" : ans += 0;
+		break;
+	    }
+	return ans;
+    }
     public int compareTo(Barcode other) {
 	return zip.compareTo(other.zip);
     }
@@ -76,24 +103,20 @@ public class Barcode implements Comparable<Barcode> {
 	for ( int i = 1; i < 26; i += 5 ) {
 	    String bars = code.substring(i, i+5);
 	    System.out.println(bars);
-	    if ( ( bars.equals(":::||") ||
-		   bars ==  "::|:|" ||
-		   bars ==  "::||:" ||
-		   bars ==  ":|::|" ||
-		   bars ==  ":|:|:" ||
-		   bars ==  ":||::" ||
-		   bars ==  "|:::|" ||
-		   bars ==  "|::|:" ||
-		   bars ==  "|:|::" ||
-		   bars ==  "||:::" ) ){
-		     
+	    if ( ! ( bars.equals(":::||") ||
+		     bars.equals("::|:|") ||
+		     bars.equals("::||:") ||
+		     bars.equals(":|::|") ||
+		     bars.equals(":|:|:") ||
+		     bars.equals(":||::") ||
+		     bars.equals("|:::|") ||
+		     bars.equals("|::|:") ||
+		     bars.equals("|:|::") ||
+		     bars.equals("||:::") ) ){
+		
 		throw new IllegalArgumentException("Barcode mismatch!");
 	    }
-	}
-	
-	//if (  ) {
-	//    throw new IllegalArgumentException("Invalid checkSum!");
-	//}
+	}	
 
 	String ans = "";
 	for ( int i = 1; i < 26; i += 5 ) {
@@ -122,6 +145,16 @@ public class Barcode implements Comparable<Barcode> {
 		break;
 	    }
 	}
+	
+	System.out.println(ans);
+	System.out.println(code.substring(26,31));
+	int sum = toInt(code.substring(26,31));
+	System.out.println(sum);
+	System.out.println( checkSum(ans) );
+        if ( checkSum(ans) != sum ) {
+	    throw new IllegalArgumentException("Invalid checkSum!");
+	}
+	
 	return ans;
     }
     
