@@ -9,19 +9,19 @@ public class Sorts {
      */
     
     public static void selectionSort(int[] data) {
-	for ( int start = 0; start < data.length; start++ ) {
-	    int small = data[start];
-	    //keep track of a variable index instead
-	    
-	    for ( int current = start+1; current < data.length-2; current++ ) {
-		if ( data[current] < small ) {
-		    small = data[current];
+	for ( int i = 0; i < data.length; i++ ) {
+	    int min = i;
+	    for ( int current = i+1; current < data.length; current++ ) {
+		if ( data[current] < data[min] ) {
+		    min = current;
 		}
 	    }
-	    
-	    data[current] = data[start];
-	    data[start] = small;
+	    if ( i != min ) {
+		int temp = data[min];
+		data[min] = data[i];
+		data[i] = temp;
+	    }
+		
 	}
     }
 }
-
