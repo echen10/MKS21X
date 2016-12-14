@@ -33,7 +33,7 @@ public class Sorts {
 		    data[j+1] = data[j];
 		}
 	    }
-	    data[] = temp;
+	    data[i] = temp;
 	}
     }
 
