@@ -1,3 +1,4 @@
+import java.util.*;
 public class Sorts {
     public static String name(){
 	return "10.Chen.Evan";
@@ -45,7 +46,7 @@ public class Sorts {
 		    data[j] = data[j+1];
 		    data[j+1] = temp;
 		}
-		System.out.println(data);
+		System.out.println(Arrays.toString(data));
 	    }
 	}
     }
