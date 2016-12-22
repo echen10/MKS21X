@@ -16,6 +16,8 @@ public class TempConvert extends JFrame implements ActionListener {
 	
 	pane = this.getContentPane();
 	pane.setLayout(new FlowLayout());
+	//pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+	//pane.setLayout(new BorderLayout());
 	
 	b1 = new JButton("FtoC");
 	b2 = new JButton("CtoF");
